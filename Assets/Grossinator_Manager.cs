@@ -18,6 +18,7 @@ public class Grossinator_Manager : MonoBehaviour
     void Start()
     {
         UnityEngine.Random.seed = (int)(Time.realtimeSinceStartup * 10000);
+        //SetRandowSentence();
     }
     void Update()
     {
@@ -79,12 +80,16 @@ public class Grossinator_Manager : MonoBehaviour
         audio.clip = Nouns[noun_num];
         audio.Play();
     }
-    public void Randomize()
+    public void SetRandowSentence()
     {
         opener_num = Mathf.RoundToInt(UnityEngine.Random.value * (Openers.Count - 1));
         adj1_num = Mathf.RoundToInt(UnityEngine.Random.value * (Adjective_1.Count - 1));
-        adj2_num= Mathf.RoundToInt(UnityEngine.Random.value * (Adjective_2.Count - 1));
+        adj2_num = Mathf.RoundToInt(UnityEngine.Random.value * (Adjective_2.Count - 1));
         noun_num = Mathf.RoundToInt(UnityEngine.Random.value * (Nouns.Count - 1));
+    }
+    public void Randomize()
+    {
+        SetRandowSentence();
         PlaySentence();
     }
 
